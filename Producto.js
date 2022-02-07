@@ -6,7 +6,19 @@ class Producto{
     }
 }
 
-let Productos = [];
+let Productos = [{
+        "titulo": "escuadra",
+        "precio": "123",
+        "thumbnail": "https://via.placeholder.com/100" 
+    },{
+        "titulo": "regla",
+        "precio": "456",
+        "thumbnail": "https://via.placeholder.com/100"
+    },{
+        "titulo": "lapiz",
+        "precio": "789",
+        "thumbnail": "https://via.placeholder.com/100"
+}];
 
 function getAll(){
     return Productos

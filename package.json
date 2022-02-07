@@ -1,7 +1,6 @@
 {
   "name": "tp-clase-8-nuevo",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -9,6 +8,17 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.2"
-  }
+    "express": "^4.17.2",
+    "socket.io": "^4.4.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leandrobotali/TP-Clase-8-Nuevo.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/leandrobotali/TP-Clase-8-Nuevo/issues"
+  },
+  "homepage": "https://github.com/leandrobotali/TP-Clase-8-Nuevo#readme",
+  "description": ""
 }

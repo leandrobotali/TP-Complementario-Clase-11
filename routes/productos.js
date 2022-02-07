@@ -13,8 +13,9 @@ router.get('/:id', function(req, res, next) {
 });
 
 router.post('/', function(req, res, next) {
-    if (req.body.titulo !== undefined && req.body.precio !== undefined && req.body.thumbnail !== undefined) {
+    if (req.body.titulo != undefined && req.body.precio != undefined && req.body.thumbnail != undefined) {
         res.status(201).send(Producto.save(req.body.titulo, req.body.precio, req.body.thumbnail));
+        req.app.io.sockets.emit("actualizarProductos", Producto.getAll())
     }
     else{
         res.status(400).send({error: "datos incorrectos"})

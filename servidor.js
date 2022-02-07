@@ -1,6 +1,13 @@
 const express = require('express');
+const { Server: HttpServer } = require('http');
+const { Server: IOServer } = require('socket.io');
+
+const Producto = require('./Producto.js');
 
 const app = express();
+const httpServer = new HttpServer(app);
+const io = new IOServer(httpServer);
+
 const path = require('path');
 
 const productosRouter = require('./routes/productos');
@@ -13,6 +20,20 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/api/productos', productosRouter);
 
-const server = app.listen(8080,() => {
-    console.log(`puerto ${server.address().port}`);
+io.on("connection", (socket) => {
+    console.log("Se ha conectado un cliente");
+    io.sockets.emit("actualizarProductos", Producto.getAll())
 })
+
+// app.use(function(req,res,next){
+//     req.io = io;
+//     next();
+// })
+
+app.io = io;
+
+httpServer.listen(8080)
+
+// const server = app.listen(8080,() => {
+//     console.log(`puerto ${server.address().port}`);
+// })
