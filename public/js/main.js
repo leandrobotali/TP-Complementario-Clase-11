@@ -18,21 +18,23 @@ document.querySelector("#formAgregarProduco").addEventListener("submit",async (e
 
 document.querySelector("#formMensajes").addEventListener("submit", e=> {
     e.preventDefault();
+    let fyh = new Date();
+
+    let fyhActual = fyh.getDate() + '/' + ( fyh.getMonth() + 1 ) + '/' + fyh.getFullYear() + " - " + fyh.getHours() + ':' + fyh.getMinutes() + ':' + fyh.getSeconds()
 
     socket.emit("new_message", {
-        author: document.querySelector("input[name=email]").value,
+        email: document.querySelector("input[name=email]").value,
+        hora: fyhActual,
         message: document.querySelector("input[name=message]").value
     })
 })
 
 const render = data => {
     const html = data.map(elem => {
-        let fyh = new Date();
-
-        let fyhActual = fyh.getDate() + '/' + ( fyh.getMonth() + 1 ) + '/' + fyh.getFullYear() + " - " + fyh.getHours() + ':' + fyh.getMinutes() + ':' + fyh.getSeconds()
+        
         return `<div>
-        <strong style = "color:blue">${elem.author}</strong>
-        <em style = "color:brown">${fyhActual}: </em>
+        <strong style = "color:blue">${elem.email}</strong>
+        <em style = "color:brown">${elem.hora}: </em>
         <em style = "font-style:italic">${elem.message}</em>
         </div>`
     }).join("");

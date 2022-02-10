@@ -6,10 +6,7 @@ const Producto = require('./Producto.js');
 const Contenedor = require('./Contenedor.js');
 let contenedor1 = new Contenedor.Contenedor('mensajes.txt')
 
-const MENSAJES = [{
-    author:"Admin",
-    message:"Bienvenido al chat!!"
-}]
+const MENSAJES = []
 
 const app = express();
 const httpServer = new HttpServer(app);
